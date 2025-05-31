@@ -13,10 +13,16 @@ class Deposito{
         }
 
         //El occurrencesOf en {} me devuelve un numero, y en [] cualquier valor
-        if(listaDeBicis.any({b => listaDeBicis.occurrencesOf(b) > 1})){  //para chequear si hay bici repetida --> corta la ejecucion 
+        //para chequear si hay bici repetida x cantidad de veces --> corta la ejecucion 
+        if(listaDeBicis.any({b => listaDeBicis.occurrencesOf(b) > 1})){  
             self.error("Hay bicis duplicadas dentro del la lista de las nuevas bicis")
         }
 
         bicis.addAll(listaDeBicis)
     }
+    
+    method bicisRapidas() = bicis.filter({b => b.velocidadCrucero() > 25})
+    method coleccionDeMarcas() = bicis.map({b => b.marca()}).asSet()
+    method esNocturno() = bicis.all({b => b.tieneLuz()})
+    method tieneBiciQueLleve(kilos) = bicis.any({b => b.carga() > kilos})
 }

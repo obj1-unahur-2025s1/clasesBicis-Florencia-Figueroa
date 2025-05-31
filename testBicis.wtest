@@ -1,4 +1,43 @@
 import bicis.*
 import depositos.*
 
-// describe "group of tests for pepita" {}
+describe "group of tests for ClasesBicis" {
+
+    //BICIS
+
+    const bici_1 = new Bici (rodado = 28, largo = 150, marca = "Olmo", accesorios = [farolito_1])
+    const farolito_1 = new Farolito ()
+
+    const bici_2 = new Bici (rodado = 26, largo = 110, marca = "Legnano", accesorios = [farolito_1, canasto_1, morral_1])
+    const canasto_1 = new Canasto (volumen = 8)
+    const morral_1 = new Morral (largo = 21, tieneOjoDeGato = true)
+
+    const bici_3 = new Bici (rodado = 20, largo = 90, marca = "Legnano", accesorios = [morral_2])
+    const morral_2 = new Morral(largo = 6, tieneOjoDeGato = false)
+
+    const deposito_1 = new Deposito ()
+
+    method initialize(){
+        deposito_1.agregarBicis([bici_1, bici_2, bici_3])
+    }
+
+    test"El deposito tiene a bici1 y bici2 como las bicis mas rapidas"{
+        assert.equals([bici_1, bici_2], deposito_1.bicisRapidas())
+    }
+
+    test "El deposito tiene a Olmo y Legnano como marcas" {
+        assert.equals(#{"Olmo", "Legnano"}, deposito_1.coleccionDeMarcas())
+    }
+
+    test "El deposito no es nocturno" {
+        assert.notThat(deposito_1.esNocturno())
+    }
+
+    test "El deposito tiene bici que lleve 10 kilos" {
+        assert.that(deposito_1.tieneBiciQueLleve(10))
+    }
+
+    test "El deposito no tiene bici que lleve 50 kilos" {
+        assert.notThat(deposito_1.tieneBiciQueLleve(50))
+    }
+}

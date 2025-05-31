@@ -6,6 +6,7 @@ class Bici {
     const marca
     const accesorios = []
 
+    method marca() = marca
     method altura() = rodado * 2.5 + 15
     method velocidadCrucero() = if(largo > 120) rodado + 6 else rodado + 2
     method carga() = accesorios.sum({a => a.carga()})
