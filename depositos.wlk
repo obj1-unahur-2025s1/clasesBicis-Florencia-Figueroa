@@ -29,5 +29,19 @@ class Deposito{
     // 3- Mas sobre depositos 
     method marcaDeBiciMasRapida() = bicis.max({b => b.velocidadCrucero()}).marca()
     method cargaDeBicisLargas() = bicis.filter({b => b.largo() > 170}).sum({b => b.carga()})
-    method bicisSinAccesorios() = bicis.count({b => b.accesorios().size() < 0})
+    method bicisSinAccesorios() = bicis.count({b => b.accesorios().isEmpty()})
+
+    // 4- Bicis compañeras
+    method sonBicisCompañeras(unaBici, otraBici) =
+       (unaBici.marca() == otraBici.marca()) and ((unaBici.largo() - otraBici.largo()) < 10)
+    
+    method biciCompañeraDe(unaBici){
+        if (bicis.contains(unaBici)){
+            self.error("Ya se encuentra en el deposito por lo tanto no puede ser compañera de si misma")
+        }
+        return bicis.filter({b => self.sonBicisCompañeras(unaBici, b)})
+    }
+    
+
+    
 }

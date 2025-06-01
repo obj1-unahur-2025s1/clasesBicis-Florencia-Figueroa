@@ -15,6 +15,8 @@ describe "group of tests for ClasesBicis" {
     const bici_3 = new Bici (rodado = 20, largo = 90, marca = "Legnano", accesorios = [morral_2])
     const morral_2 = new Morral(largo = 6, tieneOjoDeGato = false)
 
+    const bici_4 = new Bici(rodado = 24, largo = 119, marca = "Legnano", accesorios= [farolito_1, morral_2])
+
     const deposito_1 = new Deposito ()
 
     method initialize(){
@@ -56,5 +58,9 @@ describe "group of tests for ClasesBicis" {
 
     test "Cantidad de bicis sin accesorios" {
         assert.equals(0, deposito_1.bicisSinAccesorios())
+    }
+
+    test "Bici_2 tiene una compañera en el deposito_1" {
+        assert.equals([bici_2], deposito_1.biciCompañeraDe(bici_4))
     }
 }
