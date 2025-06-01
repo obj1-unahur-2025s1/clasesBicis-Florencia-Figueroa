@@ -37,11 +37,13 @@ class Deposito{
     
     method biciCompañeraDe(unaBici){
         if (bicis.contains(unaBici)){
-            self.error("Ya se encuentra en el deposito por lo tanto no puede ser compañera de si misma")
-        }
+            self.error("Ya se encuentra en el deposito por lo tanto no puede ser compañera de si misma")}
+       
         return bicis.filter({b => self.sonBicisCompañeras(unaBici, b)})
-    }
-    
+    } 
 
-    
+    // 6 - Desafios
+    // method hayCompañeras()= 
+    // method parDeBicis() = 
+    // method seHizoLaLuz() =
 }
