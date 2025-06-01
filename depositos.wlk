@@ -25,4 +25,9 @@ class Deposito{
     method coleccionDeMarcas() = bicis.map({b => b.marca()}).asSet()
     method esNocturno() = bicis.all({b => b.tieneLuz()})
     method tieneBiciQueLleve(kilos) = bicis.any({b => b.carga() > kilos})
+
+    // 3- Mas sobre depositos 
+    method marcaDeBiciMasRapida() = bicis.max({b => b.velocidadCrucero()}).marca()
+    method cargaDeBicisLargas() = bicis.filter({b => b.largo() > 170}).sum({b => b.carga()})
+    method bicisSinAccesorios() = bicis.count({b => b.accesorios().size() < 0})
 }

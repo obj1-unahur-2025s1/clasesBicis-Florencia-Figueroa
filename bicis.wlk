@@ -4,14 +4,13 @@ class Bici {
     const rodado
     const largo
     const marca
-    const accesorios = []
-
+    const property accesorios = []
+    
     method marca() = marca
+    method largo() = largo
     method altura() = rodado * 2.5 + 15
     method velocidadCrucero() = if(largo > 120) rodado + 6 else rodado + 2
     method carga() = accesorios.sum({a => a.carga()})
-    method agergarAccesorio(unAccesorio) {accesorios.add(unAccesorio)}
-    method quitarAccesorio(unAccesorio){accesorios.remove(unAccesorio)}
     method peso() = rodado / 2 + self.pesoAccesorios()
     method pesoAccesorios() = accesorios.sum({a => a.peso()})
     method tieneLuz() = accesorios.any({a => a.esLuminoso()})

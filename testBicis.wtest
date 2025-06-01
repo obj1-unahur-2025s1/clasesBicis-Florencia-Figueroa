@@ -33,11 +33,28 @@ describe "group of tests for ClasesBicis" {
         assert.notThat(deposito_1.esNocturno())
     }
 
+    // test "El deposito es nocturno" {
+    //     deposito_1.agregarBicis([bici_1, bici_2])
+    //     assert.that(deposito_1.esNocturno())
+    // }
+
     test "El deposito tiene bici que lleve 10 kilos" {
         assert.that(deposito_1.tieneBiciQueLleve(10))
     }
 
     test "El deposito no tiene bici que lleve 50 kilos" {
         assert.notThat(deposito_1.tieneBiciQueLleve(50))
+    }
+
+    test "La marca de la bici mas rapida es Olmo" {
+        assert.equals("Olmo", deposito_1.marcaDeBiciMasRapida())
+    }
+
+    test "La carga total de las bicis con un largo mayor a 170" {
+        assert.equals(0, deposito_1.cargaDeBicisLargas())
+    }
+
+    test "Cantidad de bicis sin accesorios" {
+        assert.equals(0, deposito_1.bicisSinAccesorios())
     }
 }
